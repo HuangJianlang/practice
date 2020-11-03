@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/roy/Documents/Project/practice/chatroom/client.cpp
+iostream
+-
+netinet/in.h
+-
+arpa/inet.h
+-
+poll.h
+-
+fcntl.h
+-
+sys/socket.h
+-
+sys/types.h
+-
+unistd.h
+-
+
