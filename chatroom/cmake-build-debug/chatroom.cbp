@@ -83,10 +83,10 @@
 		<Unit filename="/Users/roy/Documents/Project/practice/chatroom/chatroom_server.cpp">
 			<Option target="chatroom"/>
 		</Unit>
-		<Unit filename="/Users/roy/Documents/Project/practice/chatroom/chatroom_server.h">
+		<Unit filename="/Users/roy/Documents/Project/practice/chatroom/client.cpp">
 			<Option target="chatroom"/>
 		</Unit>
-		<Unit filename="/Users/roy/Documents/Project/practice/chatroom/client.cpp">
+		<Unit filename="/Users/roy/Documents/Project/practice/chatroom/hello_world_libevent.cpp">
 			<Option target="chatroom"/>
 		</Unit>
 		<Unit filename="/Users/roy/Documents/Project/practice/chatroom/main.cpp">

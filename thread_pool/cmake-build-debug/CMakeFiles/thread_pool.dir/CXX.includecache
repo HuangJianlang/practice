@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/roy/Documents/Project/practice/thread_pool/linux_6_2.cpp
+errno.h
+-
+iostream
+-
+cstring
+-
+netinet/in.h
+-
+arpa/inet.h
+-
+sys/stat.h
+-
+
