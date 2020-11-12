@@ -9,6 +9,9 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <unistd.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <sys/uio.h>
 
 using namespace std;
 
@@ -73,10 +76,32 @@ int main(int argc, char* argv[]){
             }
         }
 
+        //目标文件有效 发送正常的HTTP 应答
         if (valid){
+            ret = snprintf(header_buf, BUFFER_SIZE-1, "%s %s\r\b", "HTTP/1.1", status_line[0]);
+            len += ret;
+            ret = snprintf(header_buf + len, BUFFER_SIZE-1-len, "Content-Length: %d\r\n", file_stat.st_size);
+
+            len += ret;
+            ret = snprintf(header_buf+len, BUFFER_SIZE-1-len, "%s", "\r\n");
+
+            struct iovec iv[2];
+            iv[0].iov_base = header_buf;
+            iv[0].iov_len = strlen(header_buf);
+            iv[1].iov_base = file_buf;
+            iv[1].iov_len = file_stat.st_size;
+            ret = writev(connfd, iv, 2);
+        } else {
+            ret = snprintf(header_buf, BUFFER_SIZE-1, "%s %s\r\n", "HTTP/1.1", status_line[1]);
+            len += ret;
+            ret = snprintf(header_buf+len, BUFFER_SIZE-1-len, "%s", "\r\n");
+            send(connfd, header_buf, strlen(header_buf), 0);
         }
+        close(connfd);
+        delete[] file_buf;
 
     }
 
+    close(listenfd);
     return 0;
 }
